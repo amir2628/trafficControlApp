@@ -5,30 +5,6 @@ from django.shortcuts import render, redirect
 from .models import TrafficLightConfiguration
 from .forms import TrafficLightForm
 
-# def control_dashboard(request):
-    # # Retrieve the configuration; if it doesn't exist, create one with default values.
-    # config, created = TrafficLightConfiguration.objects.get_or_create(id=1)
-    
-    # # Calculate the next state using the model's method.
-    # next_state = config.next_state()
-
-    # # Process form submission.
-    # if request.method == 'POST':
-    #     form = TrafficLightForm(request.POST, instance=config)
-    #     if form.is_valid():
-    #         form.save()
-    #         # Redirect to avoid resubmission.
-    #         return redirect('control_dashboard')
-    # else:
-    #     form = TrafficLightForm(instance=config)
-
-    # context = {
-    #     'form': form,
-    #     'config': config,
-    #     'next_state': next_state,
-    #     'page_title': 'Traffic Light Control Dashboard',
-    # }
-    # return render(request, 'traffic_app/control.html', context)
 def control_dashboard(request):
     config = TrafficLightConfiguration.objects.get_or_create(id=1)[0]
     form = TrafficLightForm(instance=config)
