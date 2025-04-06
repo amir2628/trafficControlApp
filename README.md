@@ -7,7 +7,7 @@ A modern web-based traffic light control system built with Django that features:
 - AJAX-powered interface with no page reloads
 - Responsive design with Bootstrap 5
 
-![Screenshot](https://via.placeholder.com/800x400.png?text=Traffic+Light+Control+Dashboard) *Add actual screenshot later*
+![Screenshot](https://github.com/amir2628/trafficControlApp/blob/master/screenshots/app.png)
 
 ## ✨ Features
 - **Visual Simulation**: Realistic traffic light display with active state highlighting
