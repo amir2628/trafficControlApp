@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'traffic_app/css/style.css' %}">
+</head>
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <h1>{{ page_title }}</h1>
+        </div>
+    </header>
+    
+    <main class="container my-4">
+        <div class="row">
+            <!-- Visual Traffic Light -->
+            <div class="col-md-4 mb-4">
+                <div class="traffic-light">
+                    <div class="light red"></div>
+                    <div class="light yellow"></div>
+                    <div class="light green"></div>
+                </div>
+                <div class="simulation-info mt-3">
+                    <h3 class="current-state-display">{{ config.current_state }}</h3>
+                    <p class="countdown"></p>
+                </div>
+            </div>
+            <div id="state-data" 
+                data-current-state="{{ config.current_state }}"
+                data-red="{{ config.red_duration }}"
+                data-yellow="{{ config.yellow_duration }}"
+                data-green="{{ config.green_duration}}"
+                style="display: none;">
+            </div>
+            <!-- Configuration Display -->
+            <div class="col-md-4 mb-4">
+                <div class="card config">
+                    <div class="card-body">
+                        <h2 class="card-title">Current Configuration</h2>
+                        <div class="config-details">
+                            <p><strong>Red:</strong> <span class="red-duration">{{ config.red_duration }}</span>s</p>
+                            <p><strong>Yellow:</strong> <span class="yellow-duration">{{ config.yellow_duration }}</span>s</p>
+                            <p><strong>Green:</strong> <span class="green-duration">{{ config.green_duration }}</span>s</p>
+                            <p><strong>Last Updated:</strong> <span class="last-updated">{{ config.last_updated }}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update Form -->
+            <div class="col-md-4 mb-4">
+                <div class="card update-form">
+                    <div class="card-body">
+                        <h2 class="card-title">Update Configuration</h2>
+                        <form id="configForm" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.as_p }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Pass Django variables to JavaScript
+        const initialState = "{{ config.current_state }}";
+        const stateDurations = {
+            'Red': parseInt("{{ config.red_duration }}"),
+            'Yellow': parseInt("{{ config.yellow_duration }}"),
+            'Green': parseInt("{{ config.green_duration }}")
+        };
+    </script>
+    <script src="{% static 'traffic_app/js/automation.js' %}"></script>
+</body>
+</html>

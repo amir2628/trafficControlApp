@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.db
+db.sqlite3
+
+# Media and static (collected files)
+media/
+staticfiles/
+static_root/
+
+# Environment variables
+.env
+.env.*
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS and Windows
+.DS_Store
+Thumbs.db
+
+# Node (if using JS frontend or npm/yarn)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# VSCode debug stuff
+.vscode/
+
+# Pipenv
+Pipfile.lock
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Docker
+*.pid
